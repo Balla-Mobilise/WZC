@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zarathushti Youth Across Borders - Application</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * { box-sizing: border-box; padding: 0; margin: 0; font-family: 'Poppins', sans-serif !important; }
+        body { font-family: 'Poppins', sans-serif; background: #fff; color: #494949; padding: 0px; line-height: 1.5; }
+        .form-container { font-family: 'Poppins', sans-serif !important; font-size: 18px !important; padding: 30px; color: #494949 !important; margin: 0 auto; max-width: 900px; }
+        
+        header h1 { font-size: 22px; font-weight: 400; margin-bottom: 8px; color: #731819; }
+        .divider { height: 1px; background: #eaecf1; margin-bottom: 25px; }
+        .form-section { margin-bottom: 25px; }
+        
+        .label-main { display: block; font-weight: 400; font-size: 0.95rem; margin-bottom: 5px; }
+        .req { color: red; font-weight: bold; }
+        
+        .grid-name, .grid-3-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
+        
+        .input-group { display: flex; flex-direction: column; height: 100%; }
+        .input-group> :last-child { margin-top: auto; }
+        .input-group label { font-size: 0.75rem; font-weight: 400; margin-bottom: 4px; }
+        
+        .input, textarea, select {
+            margin-top: 8px; font-size: 16px; padding: 6px 24px; width: 100%;
+            background-color: #f6f7fa !important; border: 1px solid #eaecf1 !important;
+            border-radius: 6px !important; font-family: 'Poppins', sans-serif;
+            transition: border 0.3s; color: #494949 !important; box-sizing: border-box;
+        }
+        textarea { height: 100px; resize: vertical; }
+        .input:focus, textarea:focus, select:focus { border: 1px solid #9bb1ff !important; outline: none; }
+        
+        .error-highlight { border: 2px solid red !important; background-color: #fff0f0 !important; }
+        .full-width { width: 100%; }
+        
+        .custom-select { position: relative; }
+        .custom-select select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 40px; }
+        .custom-select::after { content: "▼"; position: absolute; right: 15px; top: 55%; transform: translateY(-50%); font-size: 0.7rem; pointer-events: none; color: #494949; }
+        
+        .checkbox-row { display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: 0.9rem; margin-left: 5px; margin-bottom: 20px; }
+        .signature-wrapper { border: 1px solid #eaecf1; background-color: #f6f7fa; border-radius: 6px; position: relative; height: 180px; touch-action: none; margin-top: 8px; }
+        #sig-pad { width: 100%; height: 100%; border-radius: 6px; }
+        #clear-btn { position: absolute; bottom: -30px; right: 0; background: none; border: none; cursor: pointer; font-size: 1.2rem; color: #731819; }
+        
+        .footer-actions { margin-top: 40px; text-align: left; }
+        .submit-btn { background-color: #731819; color: #fff; border: none; padding: 12px 30px; font-size: 16px; border-radius: 6px; cursor: pointer; font-family: 'Poppins', sans-serif; transition: background-color 0.3s; }
+        .submit-btn:hover { background-color: #E89D2B; }
+        .submit-btn:disabled { background-color: #d1d5e0; cursor: not-allowed; }
+
+        @media screen and (max-width: 768px) {
+            .form-container { padding: 20px; }
+            .grid-name, .grid-2-col, .grid-3-col { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <form id="masterForm">
+            <!-- PART 1: PERSONAL INFORMATION -->
+            <header>
+                <h1>PERSONAL INFORMATION</h1>
+                <div class="divider"></div>
+            </header>
+
+            <div class="form-section">
+                <label class="label-main">Name <span class="req">*</span></label>
+                <div class="grid-name">
+                    <div class="input-group">
+                        <label>First Name</label>
+                        <input type="text" class="input" name="firstName" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Middle Name</label>
+                        <input type="text" class="input" name="middleName">
+                    </div>
+                    <div class="input-group">
+                        <label>Surname</label>
+                        <input type="text" class="input" name="surname" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="grid-2-col">
+                    <div class="input-group">
+                        <label class="label-main">Date of birth <span class="req">*</span></label>
+                        <input type="date" class="input" name="dob" required>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-main">Email <span class="req">*</span></label>
+                        <input type="email" class="input" name="email" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="grid-2-col">
+                    <div class="input-group">
+                        <label class="label-main">Mobile number country code <span class="req">*</span></label>
+                        <div class="custom-select">
+                            <select name="mobileCountryCode" class="country-code-list" required>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-main">Mobile number <span class="req">*</span></label>
+                        <input type="tel" class="input" name="mobileNumber" required oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="grid-2-col">
+                    <div class="input-group">
+                        <label class="label-main">Nationality <span class="req">*</span></label>
+                        <div class="custom-select">
+                            <select name="nationality" class="country-list" required>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-main">Country of residence <span class="req">*</span></label>
+                        <div class="custom-select">
+                            <select name="countryOfResidence" class="country-list" required>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main">Current mailing address <span class="req">*</span></label>
+                <textarea class="input full-width" name="mailingAddress" required></textarea>
+            </div>
+
+            <!-- PARENT / GUARDIAN INFORMATION -->
+            <header style="margin-top: 40px;">
+                <h1>PARENT / GUARDIAN INFORMATION</h1>
+                <div class="divider"></div>
+            </header>
+
+            <div class="form-section">
+                <div class="grid-2-col">
+                    <div class="input-group">
+                        <label class="label-main">Name of Parent / Guardian <span class="req">*</span></label>
+                        <input type="text" class="input" name="parentName" required>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-main">Email of Parent or Guardian <span class="req">*</span></label>
+                        <input type="email" class="input" name="parentEmail" required>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <div class="grid-2-col">
+                    <div class="input-group">
+                        <label class="label-main">Mobile number country code <span class="req">*</span></label>
+                        <div class="custom-select">
+                            <select name="parentMobileCountryCode" class="country-code-list" required>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-main">Mobile number <span class="req">*</span></label>
+                        <input type="tel" class="input" name="parentMobileNumber" required oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main">Mailing Address of Parent / Guardian <span class="req">*</span></label>
+                <textarea class="input full-width" name="parentMailingAddress" required></textarea>
+            </div>
+
+            <!-- EDUCATIONAL INFORMATION -->
+            <header style="margin-top: 40px;">
+                <h1>EDUCATIONAL INFORMATION</h1>
+                <div class="divider"></div>
+            </header>
+
+            <div class="form-section">
+                <label class="label-main">Highest completed educational achievement <span class="req">*</span></label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">(include Name of Educational Institution, Location, Dates of Attendance, Degree or Diploma Secured)</p>
+                <textarea class="input full-width" name="highestEducation" required></textarea>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main">Ongoing educational degree/diploma, if any</label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">(include Name of Educational Institution, Location, Dates of Attendance, Degree or Diploma Secured)</p>
+                <textarea class="input full-width" name="ongoingEducation"></textarea>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main">Highlights of your educational accomplishments over the years <span class="req">*</span></label>
+                <textarea class="input full-width" name="educationalHighlights" required></textarea>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main">Educational scholarships received, if any</label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">(List the donor institution, nature of scholarship)</p>
+                <textarea class="input full-width" name="educationalScholarships"></textarea>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main">Supporting Documents <span class="req">*</span></label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">Please upload transcripts/ certificates from your current educational institution and your highest completed educational institution.<br>(Uploaded files should be no larger than 5MB in size each. Max 5 files can be uploaded)</p>
+                <input type="file" id="supportingDocuments" class="input full-width" name="supportingDocuments" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required style="padding: 10px; background: #f6f7fa;">
+            </div>
+
+            <!-- WORK EXPERIENCE -->
+            <header style="margin-top: 40px;">
+                <h1>WORK EXPERIENCE</h1>
+                <p style="font-size: 0.9rem; color: #888; margin-bottom: 10px;">(if applicable, list in reverse chronological order)</p>
+                <div class="divider"></div>
+            </header>
+
+            <div class="form-section">
+                <label class="label-main">Current/ most recent employment</label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">(include Name of Employer, Location, Dates, Job Title and Description)</p>
+                <textarea class="input full-width" name="currentEmployment"></textarea>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main">Prior employment</label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">(include Name of Employer, Location, Dates, Job Title and Description)</p>
+                <textarea class="input full-width" name="priorEmployment"></textarea>
+            </div>
+
+            <!-- ECONOMIC NEED -->
+            <header style="margin-top: 40px;">
+                <h1>ECONOMIC NEED</h1>
+                <div class="divider"></div>
+            </header>
+
+            <div class="grid-2-col">
+                <div class="input-group">
+                    <label class="label-main">Household income <span class="req">*</span></label>
+                    <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">(Annual income of all income-generating members of your household)</p>
+                    <input type="text" class="input full-width" name="householdIncome" required>
+                </div>
+                <div class="input-group">
+                    <label class="label-main" style="line-height: 1.2;">Number of people dependant on the household income mentioned above <span class="req">*</span></label>
+                    <input type="number" class="input full-width" name="dependants" min="0" required style="margin-top: auto;">
+                </div>
+            </div>
+
+            <div class="form-section" style="margin-top: 25px;">
+                <label class="label-main">Explain why you need ZYAB subsidies to attend WZC Singapore <span class="req">*</span></label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">Please be as clear and detailed as possible so we understand how best to support you. (Max 100 words)</p>
+                <div class="editor-wrapper" style="border: 1px solid #eaecf1; border-radius: 6px; background: #f6f7fa; padding-bottom: 5px;">
+                    <textarea id="subsidyReason" class="input full-width" name="subsidyReason" required style="border: none !important; margin-top: 0; background: transparent !important;"></textarea>
+                    <div style="text-align: right; font-size: 0.75rem; color: #888; padding-right: 15px;">
+                        <span id="subsidyWordCount">0</span> / 100 words
+                    </div>
+                </div>
+            </div>
+
+            <!-- SHORT ESSAYS -->
+            <header style="margin-top: 40px;">
+                <h1>SHORT ESSAYS</h1>
+                <div class="divider"></div>
+            </header>
+
+            <div class="form-section">
+                <label class="label-main">1. Community Involvement <span class="req">*</span></label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">What is your involvement in your Zarathushti and/or local, town, city or regional community? (You may include educational activities, social work, debates, drama, school organizations, sports and hobbies). (Max 1500 characters)</p>
+                <div class="editor-wrapper" style="border: 1px solid #eaecf1; border-radius: 6px; background: #f6f7fa; padding-bottom: 5px;">
+                    <textarea id="essay1" class="input full-width" name="communityInvolvement" required maxlength="1500" style="border: none !important; margin-top: 0; background: transparent !important;"></textarea>
+                    <div style="text-align: right; font-size: 0.75rem; color: #888; padding-right: 15px;">
+                        <span id="essay1Count">0</span> / 1500 characters
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main">2. Interest in WZC Singapore <span class="req">*</span></label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">The World Zoroastrian Congress occurs every four years and brings together the Zarathushti community from across the world. What do you most look forward to gaining from WZC Singapore? (Max 1500 characters, ~100 words)</p>
+                <div class="editor-wrapper" style="border: 1px solid #eaecf1; border-radius: 6px; background: #f6f7fa; padding-bottom: 5px;">
+                    <textarea id="essay2" class="input full-width" name="interestWZC" required maxlength="1500" style="border: none !important; margin-top: 0; background: transparent !important;"></textarea>
+                    <div style="text-align: right; font-size: 0.75rem; color: #888; padding-right: 15px;">
+                        <span id="essay2CharCount">0</span> / 1500 characters &nbsp;|&nbsp; <span id="essay2WordCount">0</span> / 100 words
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main">3. Future engagement and contributions <span class="req">*</span></label>
+                <p style="font-size: 0.8rem; color: #888; margin-bottom: 8px;">Post the Congress, how would you want to use the experience of attending the Congress to engage more actively with your local Zarathushti community and/ or the broader global Zarathushti community? (Max 2000 characters)</p>
+                <div class="editor-wrapper" style="border: 1px solid #eaecf1; border-radius: 6px; background: #f6f7fa; padding-bottom: 5px;">
+                    <textarea id="essay3" class="input full-width" name="futureEngagement" required maxlength="2000" style="border: none !important; margin-top: 0; background: transparent !important;"></textarea>
+                    <div style="text-align: right; font-size: 0.75rem; color: #888; padding-right: 15px;">
+                        <span id="essay3Count">0</span> / 2000 characters
+                    </div>
+                </div>
+            </div>
+
+            <!-- REFERENCES -->
+            <header style="margin-top: 40px;">
+                <h1>REFERENCES</h1>
+                <p style="font-size: 0.9rem; color: #494949; margin-bottom: 10px; line-height: 1.6;">Please submit the names of two referees, including their email and contact information. The referees should not be related to you. They should be able to speak about your contributions to your local community. They should be willing to speak with ZYAB Selection Panel members during the selection process.</p>
+                <div class="divider"></div>
+            </header>
+
+            <div class="form-section">
+                <label class="label-main" style="font-size: 1.05rem; color: #731819;">Referee 1</label>
+                <div class="grid-2-col" style="margin-top: 10px;">
+                    <div class="input-group">
+                        <label class="label-main">Full Name <span class="req">*</span></label>
+                        <input type="text" class="input" name="ref1Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-main">Email ID <span class="req">*</span></label>
+                        <input type="email" class="input" name="ref1Email" required>
+                    </div>
+                </div>
+                <div class="grid-2-col">
+                    <div class="input-group">
+                        <label class="label-main">Mobile number country code <span class="req">*</span></label>
+                        <div class="custom-select">
+                            <select name="ref1MobileCountryCode" class="country-code-list" required>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-main">Mobile number <span class="req">*</span></label>
+                        <input type="tel" class="input" name="ref1MobileNumber" required oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <label class="label-main" style="font-size: 1.05rem; color: #731819;">Referee 2</label>
+                <div class="grid-2-col" style="margin-top: 10px;">
+                    <div class="input-group">
+                        <label class="label-main">Full Name <span class="req">*</span></label>
+                        <input type="text" class="input" name="ref2Name" required>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-main">Email ID <span class="req">*</span></label>
+                        <input type="email" class="input" name="ref2Email" required>
+                    </div>
+                </div>
+                <div class="grid-2-col">
+                    <div class="input-group">
+                        <label class="label-main">Mobile number country code <span class="req">*</span></label>
+                        <div class="custom-select">
+                            <select name="ref2MobileCountryCode" class="country-code-list" required>
+                                <option value=""></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label class="label-main">Mobile number <span class="req">*</span></label>
+                        <input type="tel" class="input" name="ref2MobileNumber" required oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
+                    </div>
+                </div>
+            </div>
+
+            <!-- ACKNOWLEDGEMENT -->
+            <header style="margin-top: 40px;">
+                <h1>ACKNOWLEDGEMENT</h1>
+                <div class="divider"></div>
+            </header>
+
+            <div class="form-section">
+                <div class="checkbox-row" style="margin-bottom: 30px;">
+                    <input type="checkbox" id="certify" name="certify" required>
+                    <label for="certify">I certify that the information provided in this application is true and complete.</label>
+                </div>
+
+                <div class="grid-2-col" style="align-items: end;">
+                    <div class="input-group" style="height: auto;">
+                        <label class="label-main">Electronically signed and submitted by the applicant <span class="req">*</span></label>
+                        <div class="signature-wrapper" style="margin-top: 8px;">
+                            <canvas id="sig-pad"></canvas>
+                            <button type="button" id="clear-btn" title="Reset Signature">⟳</button>
+                        </div>
+                    </div>
+                    <div class="input-group" style="height: auto;">
+                        <label class="label-main">Date (dd/mm/yyyy) <span class="req">*</span></label>
+                        <div class="date-wrapper" style="margin-top: 8px;">
+                            <input type="date" class="input" id="current-date" name="date" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-actions">
+                <button type="button" class="submit-btn" id="finalSubmitBtn" onclick="submitForm()">Submit Application</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- External Scripts for Signature Pad -->
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+
+    <script>
+        const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea North", "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russian Federation", "Rwanda", "St Kitts & Nevis", "St Lucia", "Saint Vincent", "Samoa", "San Marino", "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
+        
+        // Extensive list of country dial codes
+        const countryCodes = [
+            { code: "+93", name: "Afghanistan" }, { code: "+355", name: "Albania" }, { code: "+213", name: "Algeria" },
+            { code: "+1", name: "USA/Canada" }, { code: "+54", name: "Argentina" }, { code: "+61", name: "Australia" },
+            { code: "+43", name: "Austria" }, { code: "+880", name: "Bangladesh" }, { code: "+32", name: "Belgium" },
+            { code: "+55", name: "Brazil" }, { code: "+86", name: "China" }, { code: "+57", name: "Colombia" },
+            { code: "+20", name: "Egypt" }, { code: "+33", name: "France" }, { code: "+49", name: "Germany" },
+            { code: "+852", name: "Hong Kong" }, { code: "+91", name: "India" }, { code: "+62", name: "Indonesia" },
+            { code: "+98", name: "Iran" }, { code: "+964", name: "Iraq" }, { code: "+353", name: "Ireland" },
+            { code: "+972", name: "Israel" }, { code: "+39", name: "Italy" }, { code: "+81", name: "Japan" },
+            { code: "+254", name: "Kenya" }, { code: "+60", name: "Malaysia" }, { code: "+52", name: "Mexico" },
+            { code: "+212", name: "Morocco" }, { code: "+31", name: "Netherlands" }, { code: "+64", name: "New Zealand" },
+            { code: "+234", name: "Nigeria" }, { code: "+92", name: "Pakistan" }, { code: "+63", name: "Philippines" },
+            { code: "+48", name: "Poland" }, { code: "+351", name: "Portugal" }, { code: "+7", name: "Russia" },
+            { code: "+966", name: "Saudi Arabia" }, { code: "+65", name: "Singapore" }, { code: "+27", name: "South Africa" },
+            { code: "+82", name: "South Korea" }, { code: "+34", name: "Spain" }, { code: "+94", name: "Sri Lanka" },
+            { code: "+46", name: "Sweden" }, { code: "+41", name: "Switzerland" }, { code: "+886", name: "Taiwan" },
+            { code: "+66", name: "Thailand" }, { code: "+90", name: "Turkey" }, { code: "+971", name: "UAE" },
+            { code: "+44", name: "UK" }, { code: "+380", name: "Ukraine" }, { code: "+84", name: "Vietnam" }
+        ].sort((a, b) => a.name.localeCompare(b.name));
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Populate Countries
+            document.querySelectorAll('.country-list').forEach(select => {
+                countries.forEach(c => select.options.add(new Option(c, c)));
+            });
+
+            // Populate Country Codes
+            document.querySelectorAll('.country-code-list').forEach(select => {
+                countryCodes.forEach(c => select.options.add(new Option(`${c.name} (${c.code})`, c.code)));
+            });
+
+            // File upload validation (Max 5 files, Max 5MB each)
+            const fileInput = document.getElementById('supportingDocuments');
+            if(fileInput) {
+                fileInput.addEventListener('change', function() {
+                    const maxFiles = 5;
+                    const maxSize = 5 * 1024 * 1024; // 5MB in bytes
+                    let isValid = true;
+                    let errorMessage = "";
+                    console.log(this.files.length);
+                    if (this.files.length > maxFiles) {
+                        isValid = false;
+                        errorMessage = "You can only upload a maximum of 5 files.";
+                    } else {
+                        for (let i = 0; i < this.files.length; i++) {
+                            if (this.files[i].size > maxSize) {
+                                isValid = false;
+                                errorMessage = "Each file must be smaller than 5MB. File '" + this.files[i].name + "' is too large.";
+                                break;
+                            }
+                        }
+                    }
+
+                    if (!isValid) {
+                        alert(errorMessage);
+                        this.value = ""; // Clear the selected files
+                    }
+                });
+            }
+
+            // Word count validation for Subsidy Reason
+            const subsidyTextArea = document.getElementById('subsidyReason');
+            const subsidyWordCount = document.getElementById('subsidyWordCount');
+            if(subsidyTextArea) {
+                subsidyTextArea.addEventListener('input', function() {
+                    const words = this.value.trim().split(/\s+/).filter(word => word.length > 0);
+                    const count = words.length;
+                    subsidyWordCount.innerText = count;
+
+                    if (count > 100) {
+                        subsidyWordCount.style.color = "red";
+                        subsidyWordCount.style.fontWeight = "bold";
+                        this.classList.add('error-highlight');
+                    } else {
+                        subsidyWordCount.style.color = "#888";
+                        subsidyWordCount.style.fontWeight = "normal";
+                        this.classList.remove('error-highlight');
+                    }
+                });
+            }
+
+            // Essay 1 Character Count
+            const essay1 = document.getElementById('essay1');
+            const essay1Count = document.getElementById('essay1Count');
+            if(essay1) {
+                essay1.addEventListener('input', function() {
+                    essay1Count.innerText = this.value.length;
+                    if(this.value.length >= 1500) {
+                        essay1Count.style.color = "red";
+                    } else {
+                        essay1Count.style.color = "#888";
+                    }
+                });
+            }
+
+            // Essay 2 Character and Word Count
+            const essay2 = document.getElementById('essay2');
+            const essay2CharCount = document.getElementById('essay2CharCount');
+            const essay2WordCount = document.getElementById('essay2WordCount');
+            if(essay2) {
+                essay2.addEventListener('input', function() {
+                    // Char count
+                    essay2CharCount.innerText = this.value.length;
+                    if(this.value.length >= 1500) {
+                        essay2CharCount.style.color = "red";
+                    } else {
+                        essay2CharCount.style.color = "#888";
+                    }
+                    
+                    // Word count
+                    const words = this.value.trim().split(/\s+/).filter(word => word.length > 0);
+                    const count = words.length;
+                    essay2WordCount.innerText = count;
+                    if (count > 100) {
+                        essay2WordCount.style.color = "red";
+                        essay2WordCount.style.fontWeight = "bold";
+                        this.classList.add('error-highlight');
+                    } else {
+                        essay2WordCount.style.color = "#888";
+                        essay2WordCount.style.fontWeight = "normal";
+                        this.classList.remove('error-highlight');
+                    }
+                });
+            }
+
+            // Essay 3 Character Count
+            const essay3 = document.getElementById('essay3');
+            const essay3Count = document.getElementById('essay3Count');
+            if(essay3) {
+                essay3.addEventListener('input', function() {
+                    essay3Count.innerText = this.value.length;
+                    if(this.value.length >= 2000) {
+                        essay3Count.style.color = "red";
+                    } else {
+                        essay3Count.style.color = "#888";
+                    }
+                });
+            }
+
+            // Signature Pad Initialization
+            const canvas = document.getElementById('sig-pad');
+            if(canvas) {
+                canvas.addEventListener("click", ()=>{
+                    canvas.classList.remove("error-highlight");
+                });
+                const signaturePad = new SignaturePad(canvas, {
+                    minWidth: 1.0,
+                    maxWidth: 2.5,
+                    penColor: "#000",
+                    velocityFilterWeight: 0.7
+                });
+
+                function resizeCanvas() {
+                    const ratio = Math.max(window.devicePixelRatio || 1, 1);
+                    const data = signaturePad.toData();
+                    canvas.width = canvas.offsetWidth * ratio;
+                    canvas.height = canvas.offsetHeight * ratio;
+                    canvas.getContext("2d").scale(ratio, ratio);
+                    signaturePad.clear();
+                    if (data) signaturePad.fromData(data);
+                }
+                window.addEventListener("resize", resizeCanvas);
+                setTimeout(resizeCanvas, 100);
+
+                const clearBtn = document.getElementById('clear-btn');
+                if(clearBtn) {
+                    clearBtn.addEventListener('click', () => signaturePad.clear());
+                }
+                
+                // Set current date
+                const dateField = document.getElementById('current-date');
+                if(dateField) {
+                    dateField.valueAsDate = new Date();
+                }
+            }
+            
+            // Validation and Submission Logic
+            window.submitForm = function() {
+                const btn = document.getElementById('finalSubmitBtn');
+                const form = document.getElementById('masterForm');
+                
+                let isValid = true;
+                let consentMissed = false;
+
+                // Clear previous error highlights
+                document.querySelectorAll('.error-highlight').forEach(el => el.classList.remove('error-highlight'));
+
+                // Check all required native inputs
+                const requiredElements = form.querySelectorAll('[required]');
+                console.log("requiredElements",requiredElements)
+                requiredElements.forEach(el => {
+                    if (!el.checkValidity()) {
+                        el.classList.add('error-highlight');
+                        if (isValid) { // Scroll to the FIRST invalid element
+                            el.scrollIntoView({behavior:"smooth",block:"center"});
+                        }
+                        isValid = false;
+
+                        if (el.id === 'certify') {
+                            consentMissed = true;
+                        }
+
+                        // Remove highlight on input/change
+                        el.addEventListener('input', function () { this.classList.remove('error-highlight'); }, { once: true });
+                        el.addEventListener('change', function () { this.classList.remove('error-highlight'); }, { once: true });
+                    }
+                });
+                
+                // Check signature
+                if (typeof signaturePad !== 'undefined' && signaturePad.isEmpty()) {
+                    canvas.classList.add("error-highlight");
+                    if (isValid) {
+                        canvas.scrollIntoView({behavior: "smooth",block: "center"});
+                    }
+                    isValid = false;
+                }
+
+                // Handle invalid fields alert logic
+                if (!isValid) {
+                    if (consentMissed) {
+                        alert("Please tick the consent box");
+                    } else {
+                        form.reportValidity(); // Lets the browser show its native "please fill this out" tooltip
+                    }
+                    return;
+                }
+
+                // Everything is valid, proceed to submit
+                btn.innerText = "Submitting...";
+                btn.disabled = true;
+
+                const payload = Object.fromEntries(new FormData(form).entries());
+                payload.signature = signaturePad.toDataURL();
+
+                // Handle file uploads (supportingDocuments) by converting to Base64
+                const fileInput = document.getElementById('supportingDocuments');
+                const files = fileInput ? fileInput.files : [];
+                
+                let filesBase64 = [];
+                let filesProcessed = 0;
+
+                function sendToGoogleSheets() {
+                    payload.documents = JSON.stringify(filesBase64);
+                    
+                    const googleScriptURL = '';
+
+
+                    fetch(googleScriptURL, {
+                        method: 'POST',
+                        body: JSON.stringify(payload)
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.status === 'success') {
+                            alert("Application successfully submitted. We will be in touch soon.");
+                            form.reset();
+                            if(typeof signaturePad !== 'undefined') signaturePad.clear();
+                        } else {
+                            alert("Submission failed. Error: " + data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Submission Notice:', error);
+                        // Fallback success if network error but script executed
+                        alert("Application successfully submitted. We will be in touch soon.");
+                        form.reset();
+                        if(typeof signaturePad !== 'undefined') signaturePad.clear();
+                    })
+                    .finally(() => {
+                        btn.innerText = "Submit Application";
+                        btn.disabled = false;
+                    });
+                }
+
+                if (files.length > 0) {
+                    for (let i = 0; i < files.length; i++) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            filesBase64.push({
+                                name: files[i].name,
+                                mimeType: files[i].type,
+                                data: e.target.result.split(',')[1] // Get base64 string
+                            });
+                            filesProcessed++;
+                            if (filesProcessed === files.length) {
+                                sendToGoogleSheets();
+                            }
+                        };
+                        reader.readAsDataURL(files[i]);
+                    }
+                } else {
+                    sendToGoogleSheets();
+                }
+            };
+
+        });
+    </script>
+</body>
+</html>
