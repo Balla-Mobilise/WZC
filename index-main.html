@@ -1,65 +1,251 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zarathushti Youth Across Borders - Application</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-        * { box-sizing: border-box; padding: 0; margin: 0; font-family: 'Poppins', sans-serif; }
-        body { font-family: 'Poppins', sans-serif; background: #fff; color: #494949; padding: 0px; line-height: 1.5; }
-        .form-container { font-family: 'Poppins', sans-serif !important; font-size: 18px !important; padding: 30px; color: #494949 !important; margin: 0 auto; width: 100%; }
-        
-        header h1 { font-size: 22px; font-weight: 400; margin-bottom: 8px; color: #731819; font-family: 'Poppins', sans-serif;}
-        .divider { height: 1px; background: #eaecf1; margin-bottom: 25px; }
-        .form-section { margin-bottom: 25px; font-family: 'Poppins', sans-serif;}
 
-        .form-section * {font-family: 'Poppins', sans-serif !important;}
-        
-        .label-main { display: block; font-weight: 400; font-size: 16px; margin-bottom: 5px; }
-        .req { color: red; font-weight: bold; }
-        
-        .grid-name, .grid-3-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-        .grid-2-col { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px; }
-        
-        .input-group { display: flex; flex-direction: column; height: 100%; }
-        .input-group> :last-child { margin-top: auto; }
-        .input-group label { font-size: 14px; font-weight: 400; margin-bottom: 4px; }
-        
-        .input, textarea, select {
-            margin-top: 0px; font-size: 16px; padding: 6px 16px; width: 100%;
-            background-color: #f6f7fa !important; border: 1px solid #eaecf1 !important;
-            border-radius: 6px !important; font-family: 'Poppins', sans-serif;
-            transition: border 0.3s; color: #494949 !important; box-sizing: border-box;
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
         }
-        .input,select{height: 38px !important;}
-        .textarea { height: 100px ; resize: vertical; }
-        .input:focus, textarea:focus, select:focus { border: 1px solid #9bb1ff !important; outline: none; }
-        
-        .error-highlight { border: 2px solid red !important; background-color: #fff0f0 !important; }
-        .email-error { color: red; font-size: 12px; margin-top: 3px; display: none; }
-        .full-width { width: 100%; }
-        
-        .custom-select { position: relative; }
-        .custom-select select { appearance: none; -webkit-appearance: none; cursor: pointer; padding-right: 40px; }
-        .custom-select::after { content: "▼"; position: absolute; right: 15px; top: 55%; transform: translateY(-50%); font-size: 11.2px; pointer-events: none; color: #494949; }
-        
-        .checkbox-row { display: flex; align-items: center; gap: 8px; font-weight: 400; font-size: 14.4px; margin-left: 5px; margin-bottom: 20px; }
-        .signature-wrapper { border: 1px solid #eaecf1; background-color: #f6f7fa; border-radius: 6px; position: relative; height: 180px; touch-action: none; margin-top: 8px; }
-        #sig-pad { width: 100%; height: 100%; border-radius: 6px; }
-        #clear-btn { position: absolute; bottom: -30px; right: 0; background: none; border: none; cursor: pointer; font-size: 19.2px; color: #731819; }
-        
-        .footer-actions { margin-top: 40px; text-align: left; }
-        .submit-btn { background-color: #731819; color: #fff; border: none; padding: 12px 30px; font-size: 16px; border-radius: 6px; cursor: pointer; font-family: 'Poppins', sans-serif; transition: background-color 0.3s; }
-        .submit-btn:hover { background-color: #E89D2B; }
-        .submit-btn:disabled { background-color: #d1d5e0; cursor: not-allowed; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #fff;
+            color: #494949;
+            padding: 0px;
+            line-height: 1.5;
+        }
+
+        .form-container {
+            font-family: 'Poppins', sans-serif !important;
+            font-size: 18px !important;
+            padding: 30px;
+            color: #494949 !important;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        header h1 {
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: #731819;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .divider {
+            height: 1px;
+            background: #eaecf1;
+            margin-bottom: 25px;
+        }
+
+        .form-section {
+            margin-bottom: 25px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .form-section * {
+            font-family: 'Poppins', sans-serif !important;
+        }
+
+        .label-main {
+            display: block;
+            font-weight: 400;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .req {
+            color: red;
+            font-weight: bold;
+        }
+
+        .grid-name,
+        .grid-3-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .grid-2-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .input-group> :last-child {
+            margin-top: auto;
+        }
+
+        .input-group label {
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 4px;
+        }
+
+        .input,
+        textarea,
+        select {
+            margin-top: 0px;
+            font-size: 16px;
+            padding: 6px 16px;
+            width: 100%;
+            background-color: #f6f7fa !important;
+            border: 1px solid #eaecf1 !important;
+            border-radius: 6px !important;
+            font-family: 'Poppins', sans-serif;
+            transition: border 0.3s;
+            color: #494949 !important;
+            box-sizing: border-box;
+        }
+
+        .input,
+        select {
+            height: 38px !important;
+        }
+
+        .textarea {
+            height: 100px;
+            resize: vertical;
+        }
+
+        .input:focus,
+        textarea:focus,
+        select:focus {
+            border: 1px solid #9bb1ff !important;
+            outline: none;
+        }
+
+        .error-highlight {
+            border: 2px solid red !important;
+            background-color: #fff0f0 !important;
+        }
+
+        .email-error {
+            color: red;
+            font-size: 12px;
+            margin-top: 3px;
+            display: none;
+        }
+
+        .full-width {
+            width: 100%;
+        }
+
+        .custom-select {
+            position: relative;
+        }
+
+        .custom-select select {
+            appearance: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+            padding-right: 40px;
+        }
+
+        .custom-select::after {
+            content: "▼";
+            position: absolute;
+            right: 15px;
+            top: 55%;
+            transform: translateY(-50%);
+            font-size: 11.2px;
+            pointer-events: none;
+            color: #494949;
+        }
+
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 400;
+            font-size: 14.4px;
+            margin-left: 5px;
+            margin-bottom: 20px;
+        }
+
+        .signature-wrapper {
+            border: 1px solid #eaecf1;
+            background-color: #f6f7fa;
+            border-radius: 6px;
+            position: relative;
+            height: 180px;
+            touch-action: none;
+            margin-top: 8px;
+        }
+
+        #sig-pad {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+        }
+
+        #clear-btn {
+            position: absolute;
+            bottom: -30px;
+            right: 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 19.2px;
+            color: #731819;
+        }
+
+        .footer-actions {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .submit-btn {
+            background-color: #731819;
+            color: #fff;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background-color: #E89D2B;
+        }
+
+        .submit-btn:disabled {
+            background-color: #d1d5e0;
+            cursor: not-allowed;
+        }
 
         @media screen and (max-width: 768px) {
-            .form-container { padding: 20px; }
-            .grid-name, .grid-2-col, .grid-3-col { grid-template-columns: 1fr; }
+            .form-container {
+                padding: 20px;
+            }
+
+            .grid-name,
+            .grid-2-col,
+            .grid-3-col {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
     <div class="form-container">
         <form id="masterForm">
@@ -112,7 +298,8 @@
                     </div>
                     <div class="input-group">
                         <label class="label-main">Mobile number <span class="req">*</span></label>
-                        <input type="tel" class="input" name="Mobile Number" required oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
+                        <input type="tel" class="input" name="Mobile Number" required
+                            oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
                     </div>
                 </div>
             </div>
@@ -174,7 +361,8 @@
                     </div>
                     <div class="input-group">
                         <label class="label-main">Mobile number <span class="req">*</span></label>
-                        <input type="tel" class="input" name="Parent Mobile Number" required oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
+                        <input type="tel" class="input" name="Parent Mobile Number" required
+                            oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
                     </div>
                 </div>
             </div>
@@ -192,52 +380,65 @@
 
             <div class="form-section">
                 <label class="label-main">Highest completed educational achievement <span class="req">*</span></label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(include Name of Educational Institution, Location, Dates of Attendance, Degree or Diploma Secured)</p>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(include Name of Educational Institution,
+                    Location, Dates of Attendance, Degree or Diploma Secured)</p>
                 <textarea class="full-width textarea" name="Highest Education" required></textarea>
             </div>
 
             <div class="form-section">
                 <label class="label-main">Ongoing educational degree/diploma, if any</label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(include Name of Educational Institution, Location, Dates of Attendance, Degree or Diploma Secured)</p>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(include Name of Educational Institution,
+                    Location, Dates of Attendance, Degree or Diploma Secured)</p>
                 <textarea class="full-width textarea" name="Ongoing Education"></textarea>
             </div>
 
             <div class="form-section">
-                <label class="label-main">Highlights of your educational accomplishments over the years <span class="req">*</span></label>
+                <label class="label-main">Highlights of your educational accomplishments over the years <span
+                        class="req">*</span></label>
                 <textarea class="full-width textarea" name="Educational Highlights" required></textarea>
             </div>
 
             <div class="form-section">
                 <label class="label-main">Educational scholarships received, if any</label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(List the donor institution, nature of scholarship)</p>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(List the donor institution, nature of
+                    scholarship)</p>
                 <textarea class="full-width textarea" name="Educational Scholarships"></textarea>
             </div>
 
             <div class="form-section">
                 <label class="label-main">Supporting Documents <span class="req">*</span></label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">Please upload transcripts/certificates from your current educational institution and your highest completed educational institution. (combine multiple files in a .zip) or share a drive link. Ensure the drive link is set to ‘Anyone can view’.</p>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">Please upload transcripts/certificates from
+                    your current educational institution and your highest completed educational institution. Upload up
+                    to 5 PDF, Word, JPG, or PNG files (maximum 5MB each), or share a drive link set to 'Anyone can view'.
+                </p>
                 <div class="grid-2-col">
-                    <input type="file" id="supportingDocuments" class="input full-width" name="supportingDocuments" accept=".zip" style="padding: 5px 10px ; background: #f6f7fa;">
-                    <input type="url" id="driveLink" class="input full-width" name="driveLink" placeholder="Share your drive link">
+                    <input type="file" id="supportingDocuments" class="input full-width" name="supportingDocuments"
+                        multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"
+                        style="padding: 5px 10px ; background: #f6f7fa;">
+                    <input type="url" id="driveLink" class="input full-width" name="driveLink"
+                        placeholder="Share your drive link">
                 </div>
             </div>
 
             <!-- WORK EXPERIENCE -->
             <header style="margin-top: 40px;">
                 <h1>WORK EXPERIENCE</h1>
-                <p style="font-size: 14.4px; color: #888; margin-bottom: 10px;">(if applicable, list in reverse chronological order)</p>
+                <p style="font-size: 14.4px; color: #888; margin-bottom: 10px;">(if applicable, list in reverse
+                    chronological order)</p>
                 <div class="divider"></div>
             </header>
 
             <div class="form-section">
                 <label class="label-main">Current/ most recent employment</label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(include Name of Employer, Location, Dates, Job Title and Description)</p>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(include Name of Employer, Location, Dates,
+                    Job Title and Description)</p>
                 <textarea class="full-width textarea" name="Current Employment"></textarea>
             </div>
 
             <div class="form-section">
                 <label class="label-main">Prior employment</label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(include Name of Employer, Location, Dates, Job Title and Description)</p>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(include Name of Employer, Location, Dates,
+                    Job Title and Description)</p>
                 <textarea class="full-width textarea" name="Prior Employment"></textarea>
             </div>
 
@@ -250,21 +451,28 @@
             <div class="grid-2-col">
                 <div class="input-group">
                     <label class="label-main">Household income <span class="req">*</span></label>
-                    <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(Annual income of all income-generating members of your household)</p>
+                    <p style="font-size: 14px; color: #888; margin-bottom: 8px;">(Annual income of all income-generating
+                        members of your household)</p>
                     <input type="text" class="input full-width" name="Household Income" required>
                 </div>
                 <div class="input-group">
-                    <label class="label-main" style="line-height: 1.2;">Number of people dependant on the household income mentioned above <span class="req">*</span></label>
-                    <input type="number" class="input full-width" name="Dependants" min="0" required style="margin-top: auto;">
+                    <label class="label-main" style="line-height: 1.2;">Number of people dependant on the household
+                        income mentioned above <span class="req">*</span></label>
+                    <input type="number" class="input full-width" name="Dependants" min="0" required
+                        style="margin-top: auto;">
                 </div>
             </div>
 
             <div class="form-section" style="margin-top: 25px;">
-                <label class="label-main">Explain why you need ZYAB subsidies to attend WZC Singapore <span class="req">*</span></label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">Please be as clear and detailed as possible so we understand how best to support you. (Max 1500 words)</p>
+                <label class="label-main">Explain why you need ZYAB subsidies to attend WZC Singapore <span
+                        class="req">*</span></label>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">Please be as clear and detailed as possible
+                    so we understand how best to support you. (Max 1500 words)</p>
                 <div class="editor-wrapper" style=" border-radius: 6px; background: #f6f7fa;position: relative;">
-                    <textarea id="subsidyReason" class="full-width textarea" name="Subsidy Reason" required style="margin-top: 0;display: block;" maxlength="1500"></textarea>
-                    <div style="text-align: right; font-size: 12px; color: #888; padding-right: 15px;position: absolute;bottom: 0;right: 0;">
+                    <textarea id="subsidyReason" class="full-width textarea" name="Subsidy Reason" required
+                        style="margin-top: 0;display: block;" maxlength="1500"></textarea>
+                    <div
+                        style="text-align: right; font-size: 12px; color: #888; padding-right: 15px;position: absolute;bottom: 0;right: 0;">
                         <span id="subsidyWordCount">0</span> / 1500 characters
                     </div>
                 </div>
@@ -278,10 +486,14 @@
 
             <div class="form-section">
                 <label class="label-main">1. Community Involvement <span class="req">*</span></label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">What is your involvement in your Zarathushti and/or local, town, city or regional community? (You may include educational activities, social work, debates, drama, school organizations, sports and hobbies). (Max 1500 characters)</p>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">What is your involvement in your
+                    Zarathushti and/or local, town, city or regional community? (You may include educational activities,
+                    social work, debates, drama, school organizations, sports and hobbies). (Max 1500 characters)</p>
                 <div class="editor-wrapper" style="border-radius: 6px; background: #f6f7fa;position: relative;">
-                    <textarea id="essay1" class="full-width textarea" name="Community Involvement" required maxlength="1500" style="margin-top: 0;display: block;"></textarea>
-                    <div style="text-align: right; font-size: 12px; color: #888; padding-right: 15px;position: absolute;bottom: 0;right: 0;">
+                    <textarea id="essay1" class="full-width textarea" name="Community Involvement" required
+                        maxlength="1500" style="margin-top: 0;display: block;"></textarea>
+                    <div
+                        style="text-align: right; font-size: 12px; color: #888; padding-right: 15px;position: absolute;bottom: 0;right: 0;">
                         <span id="essay1Count">0</span> / 1500 characters
                     </div>
                 </div>
@@ -289,10 +501,14 @@
 
             <div class="form-section">
                 <label class="label-main">2. Interest in WZC Singapore <span class="req">*</span></label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">The World Zoroastrian Congress occurs every four years and brings together the Zarathushti community from across the world. What do you most look forward to gaining from WZC Singapore? (Max 1500 characters)</p>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">The World Zoroastrian Congress occurs every
+                    four years and brings together the Zarathushti community from across the world. What do you most
+                    look forward to gaining from WZC Singapore? (Max 1500 characters)</p>
                 <div class="editor-wrapper" style="border-radius: 6px; background: #f6f7fa;position: relative;">
-                    <textarea id="essay2" class="full-width textarea" name="Interest in WZC" required maxlength="1500" style="margin-top: 0;display: block;"></textarea>
-                    <div style="text-align: right; font-size: 12px; color: #888; padding-right: 15px;position: absolute;bottom: 0;right: 0;">
+                    <textarea id="essay2" class="full-width textarea" name="Interest in WZC" required maxlength="1500"
+                        style="margin-top: 0;display: block;"></textarea>
+                    <div
+                        style="text-align: right; font-size: 12px; color: #888; padding-right: 15px;position: absolute;bottom: 0;right: 0;">
                         <span id="essay2CharCount">0</span> / 1500 characters
                     </div>
                 </div>
@@ -300,10 +516,14 @@
 
             <div class="form-section">
                 <label class="label-main">3. Future engagement and contributions <span class="req">*</span></label>
-                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">Post the Congress, how would you want to use the experience of attending the Congress to engage more actively with your local Zarathushti community and/ or the broader global Zarathushti community? (Max 2000 characters)</p>
+                <p style="font-size: 14px; color: #888; margin-bottom: 8px;">Post the Congress, how would you want to
+                    use the experience of attending the Congress to engage more actively with your local Zarathushti
+                    community and/ or the broader global Zarathushti community? (Max 2000 characters)</p>
                 <div class="editor-wrapper" style="border-radius: 6px; background: #f6f7fa;position: relative;">
-                    <textarea id="essay3" class="full-width textarea" name="Future Engagement" required maxlength="2000" style="margin-top: 0;display: block;"></textarea>
-                    <div style="text-align: right; font-size: 12px; color: #888; padding-right: 15px;position: absolute;bottom: 0;right: 0;">
+                    <textarea id="essay3" class="full-width textarea" name="Future Engagement" required maxlength="2000"
+                        style="margin-top: 0;display: block;"></textarea>
+                    <div
+                        style="text-align: right; font-size: 12px; color: #888; padding-right: 15px;position: absolute;bottom: 0;right: 0;">
                         <span id="essay3Count">0</span> / 2000 characters
                     </div>
                 </div>
@@ -312,7 +532,10 @@
             <!-- REFERENCES -->
             <header style="margin-top: 40px;">
                 <h1>REFERENCES</h1>
-                <p style="font-size: 14.4px; color: #494949; margin-bottom: 10px; line-height: 1.6;">Please submit the names of two referees, including their email and contact information. The referees should not be related to you. They should be able to speak about your contributions to your local community. They should be willing to speak with ZYAB Selection Panel members during the selection process.</p>
+                <p style="font-size: 14.4px; color: #494949; margin-bottom: 10px; line-height: 1.6;">Please submit the
+                    names of two referees, including their email and contact information. The referees should not be
+                    related to you. They should be able to speak about your contributions to your local community. They
+                    should be willing to speak with ZYAB Selection Panel members during the selection process.</p>
                 <div class="divider"></div>
             </header>
 
@@ -326,7 +549,7 @@
                     <div class="input-group">
                         <label class="label-main">Email ID <span class="req">*</span></label>
                         <input type="email" class="input" name="Ref 1 Email" id="ref1Email" required>
-                        
+
                     </div>
                 </div>
                 <div class="grid-2-col">
@@ -340,7 +563,8 @@
                     </div>
                     <div class="input-group">
                         <label class="label-main">Mobile number <span class="req">*</span></label>
-                        <input type="tel" class="input" name="Ref 1 Mobile Number" required oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
+                        <input type="tel" class="input" name="Ref 1 Mobile Number" required
+                            oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
                     </div>
                 </div>
             </div>
@@ -368,7 +592,8 @@
                     </div>
                     <div class="input-group">
                         <label class="label-main">Mobile number <span class="req">*</span></label>
-                        <input type="tel" class="input" name="Ref 2 Mobile Number" required oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
+                        <input type="tel" class="input" name="Ref 2 Mobile Number" required
+                            oninput="this.value = this.value.replace(/[^0-9+ ]/g, '')">
                     </div>
                 </div>
             </div>
@@ -382,12 +607,14 @@
             <div class="form-section">
                 <div class="checkbox-row" style="margin-bottom: 30px;">
                     <input type="checkbox" id="certify" name="certify" required>
-                    <label for="certify">I certify that the information provided in this application is true and complete.</label>
+                    <label for="certify">I certify that the information provided in this application is true and
+                        complete.</label>
                 </div>
 
                 <div class="grid-2-col" style="align-items: end;">
                     <div class="input-group" style="height: auto;">
-                        <label class="label-main">Electronically signed and submitted by the applicant <span class="req">*</span></label>
+                        <label class="label-main">Electronically signed and submitted by the applicant <span
+                                class="req">*</span></label>
                         <div class="signature-wrapper" style="margin-top: 8px;">
                             <canvas id="sig-pad"></canvas>
                             <button type="button" id="clear-btn" title="Reset Signature">⟳</button>
@@ -402,17 +629,19 @@
             </div>
 
             <div class="footer-actions">
-                <button type="button" class="submit-btn" id="finalSubmitBtn" onclick="submitForm()">Submit Application</button>
+                <button type="button" class="submit-btn" id="finalSubmitBtn" onclick="submitForm()">Submit
+                    Application</button>
             </div>
         </form>
     </div>
 
     <!-- External Scripts for Signature Pad -->
     <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
 
     <script>
         const countries = ["Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bhutan", "Bolivia", "Bosnia and Herzegovina", "Botswana", "Brazil", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Cape Verde", "Central African Republic", "Chad", "Chile", "China", "Colombia", "Comoros", "Congo", "Costa Rica", "Croatia", "Cuba", "Cyprus", "Czech Republic", "Denmark", "Djibouti", "Dominica", "Dominican Republic", "East Timor", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Fiji", "Finland", "France", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Greece", "Grenada", "Guatemala", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Israel", "Italy", "Ivory Coast", "Jamaica", "Japan", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Korea North", "Korea South", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Mauritania", "Mauritius", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Norway", "Oman", "Pakistan", "Palau", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Poland", "Portugal", "Qatar", "Romania", "Russian Federation", "Rwanda", "St Kitts & Nevis", "St Lucia", "Saint Vincent", "Samoa", "San Marino", "Sao Tome & Principe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Sudan", "Spain", "Sri Lanka", "Sudan", "Suriname", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Togo", "Tonga", "Trinidad & Tobago", "Tunisia", "Turkey", "Turkmenistan", "Tuvalu", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Yemen", "Zambia", "Zimbabwe"];
-        
+
         // Extensive list of country dial codes
         const countryCodes = [
             { code: "+93", name: "Afghanistan" }, { code: "+355", name: "Albania" }, { code: "+213", name: "Algeria" },
@@ -458,8 +687,8 @@
             // Word count validation for Subsidy Reason
             const subsidyTextArea = document.getElementById('subsidyReason');
             const subsidyWordCount = document.getElementById('subsidyWordCount');
-            if(subsidyTextArea) {
-                subsidyTextArea.addEventListener('input', function() {
+            if (subsidyTextArea) {
+                subsidyTextArea.addEventListener('input', function () {
                     const words = this.value.length;
                     const count = words.length;
                     subsidyWordCount.innerText = words;
@@ -479,11 +708,11 @@
             // Essay 1 Character Count
             const essay1 = document.getElementById('essay1');
             const essay1Count = document.getElementById('essay1Count');
-            if(essay1) {
-                essay1.addEventListener('input', function() {
+            if (essay1) {
+                essay1.addEventListener('input', function () {
                     const len = this.value.length;
                     essay1Count.innerText = len;
-                    if(len > 1500) {
+                    if (len > 1500) {
                         essay1Count.style.color = "red";
                         essay1Count.style.fontWeight = "bold";
                         this.classList.add('error-highlight');
@@ -498,11 +727,11 @@
             // Essay 2 Character Count
             const essay2 = document.getElementById('essay2');
             const essay2CharCount = document.getElementById('essay2CharCount');
-            if(essay2) {
-                essay2.addEventListener('input', function() {
+            if (essay2) {
+                essay2.addEventListener('input', function () {
                     const len = this.value.length;
                     essay2CharCount.innerText = len;
-                    if(len > 1500) {
+                    if (len > 1500) {
                         essay2CharCount.style.color = "red";
                         essay2CharCount.style.fontWeight = "bold";
                         this.classList.add('error-highlight');
@@ -517,11 +746,11 @@
             // Essay 3 Character Count
             const essay3 = document.getElementById('essay3');
             const essay3Count = document.getElementById('essay3Count');
-            if(essay3) {
-                essay3.addEventListener('input', function() {
+            if (essay3) {
+                essay3.addEventListener('input', function () {
                     const len = this.value.length;
                     essay3Count.innerText = len;
-                    if(len > 2000) {
+                    if (len > 2000) {
                         essay3Count.style.color = "red";
                         essay3Count.style.fontWeight = "bold";
                         this.classList.add('error-highlight');
@@ -537,8 +766,8 @@
             // Declared in outer scope so submitForm() can access it for validation
             let signaturePad = null;
             const canvas = document.getElementById('sig-pad');
-            if(canvas) {
-                canvas.addEventListener("click", ()=>{
+            if (canvas) {
+                canvas.addEventListener("click", () => {
                     canvas.parentElement.classList.remove("error-highlight");
                 });
                 signaturePad = new SignaturePad(canvas, {
@@ -565,22 +794,22 @@
                 setTimeout(resizeCanvas, 100);
 
                 const clearBtn = document.getElementById('clear-btn');
-                if(clearBtn) {
+                if (clearBtn) {
                     clearBtn.addEventListener('click', () => signaturePad.clear());
                 }
-                
+
                 // Set current date
                 const dateField = document.getElementById('current-date');
-                if(dateField) {
+                if (dateField) {
                     dateField.valueAsDate = new Date();
                 }
             }
-            
+
             // Validation and Submission Logic
-            window.submitForm = function() {
+            window.submitForm = function () {
                 const btn = document.getElementById('finalSubmitBtn');
                 const form = document.getElementById('masterForm');
-                
+
                 let isValid = true;
                 let consentMissed = false;
 
@@ -597,12 +826,12 @@
                     { id: 'ref1Email' },
                     { id: 'ref2Email' }
                 ];
-                emailFields.forEach(function(field) {
+                emailFields.forEach(function (field) {
                     const input = document.getElementById(field.id);
                     if (input && input.value.trim() !== '' && !emailPattern.test(input.value.trim())) {
                         input.classList.add('error-highlight');
                         if (isValid) {
-                            input.scrollIntoView({behavior: 'smooth', block: 'center'});
+                            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }
                         isValid = false;
                         input.addEventListener('input', function () {
@@ -617,7 +846,7 @@
                     if (!el.checkValidity()) {
                         el.classList.add('error-highlight');
                         if (isValid) { // Scroll to the FIRST invalid element
-                            el.scrollIntoView({behavior:"smooth",block:"center"});
+                            el.scrollIntoView({ behavior: "smooth", block: "center" });
                         }
                         isValid = false;
 
@@ -630,7 +859,7 @@
                         el.addEventListener('change', function () { this.classList.remove('error-highlight'); }, { once: true });
                     }
                 });
-                
+
                 // Check signature — signaturePad is now accessible in this scope
                 if (!signaturePad || signaturePad.isEmpty()) {
                     console.log(signaturePad)
@@ -638,7 +867,7 @@
                     if (sigWrapper) {
                         sigWrapper.classList.add("error-highlight");
                         if (isValid) {
-                            sigWrapper.scrollIntoView({behavior: "smooth", block: "center"});
+                            sigWrapper.scrollIntoView({ behavior: "smooth", block: "center" });
                         }
                     }
                     isValid = false;
@@ -652,7 +881,7 @@
                         uploadFile.classList.add('error-highlight');
                         driveLink.classList.add('error-highlight');
                         if (isValid) {
-                            uploadFile.scrollIntoView({behavior:"smooth",block:"center"});
+                            uploadFile.scrollIntoView({ behavior: "smooth", block: "center" });
                         }
                         isValid = false;
                         const removeHighlight = () => {
@@ -662,26 +891,38 @@
                         uploadFile.addEventListener('change', removeHighlight, { once: true });
                         driveLink.addEventListener('input', removeHighlight, { once: true });
                     } else if (uploadFile.files.length > 0) {
-                        const file = uploadFile.files[0];
-                        // Zip-only file type check
-                        const fileName = file.name.toLowerCase();
-                        if (!fileName.endsWith('.zip')) {
+                        const files = Array.from(uploadFile.files);
+                        const allowedExtensions = ['pdf', 'doc', 'docx', 'jpg', 'jpeg', 'png'];
+                        const invalidFile = files.find(file => {
+                            const extension = file.name.toLowerCase().split('.').pop();
+                            return !allowedExtensions.includes(extension);
+                        });
+                        const oversizedFile = files.find(file => file.size > 5 * 1024 * 1024);
+
+                        if (files.length > 5) {
                             uploadFile.classList.add('error-highlight');
                             if (isValid) {
-                                uploadFile.scrollIntoView({behavior:"smooth",block:"center"});
+                                uploadFile.scrollIntoView({ behavior: "smooth", block: "center" });
                             }
-                            alert('Only .zip files are allowed. Please compress your documents into a .zip file and try again.');
-                            uploadFile.value = ''; // Clear the invalid file
+                            alert('You can upload a maximum of 5 supporting documents.');
+                            uploadFile.value = '';
                             isValid = false;
                             uploadFile.addEventListener('change', () => uploadFile.classList.remove('error-highlight'), { once: true });
-                        }
-                        // 5MB file size check
-                        else if (file.size > 5 * 1024 * 1024) {
+                        } else if (invalidFile) {
                             uploadFile.classList.add('error-highlight');
                             if (isValid) {
-                                uploadFile.scrollIntoView({behavior:"smooth",block:"center"});
+                                uploadFile.scrollIntoView({ behavior: "smooth", block: "center" });
                             }
-                            alert('The uploaded file exceeds the 5MB size limit. Please compress your files into a smaller .zip or share a Google Drive link instead.');
+                            alert('"' + invalidFile.name + '" is not supported. Please upload PDF, DOC, DOCX, JPG, JPEG, or PNG files.');
+                            uploadFile.value = '';
+                            isValid = false;
+                            uploadFile.addEventListener('change', () => uploadFile.classList.remove('error-highlight'), { once: true });
+                        } else if (oversizedFile) {
+                            uploadFile.classList.add('error-highlight');
+                            if (isValid) {
+                                uploadFile.scrollIntoView({ behavior: "smooth", block: "center" });
+                            }
+                            alert('"' + oversizedFile.name + '" exceeds the 5MB size limit. Please choose a smaller file or share a Google Drive link instead.');
                             isValid = false;
                             uploadFile.addEventListener('change', () => uploadFile.classList.remove('error-highlight'), { once: true });
                         }
@@ -694,12 +935,12 @@
                     { id: 'essay2', limit: 1500, label: 'Interest in WZC Singapore' },
                     { id: 'essay3', limit: 2000, label: 'Future engagement and contributions' }
                 ];
-                charLimitFields.forEach(function(field) {
+                charLimitFields.forEach(function (field) {
                     const el = document.getElementById(field.id);
                     if (el && el.value.length > field.limit) {
                         el.classList.add('error-highlight');
                         if (isValid) {
-                            el.scrollIntoView({behavior: 'smooth', block: 'center'});
+                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
                         }
                         alert('The "' + field.label + '" field exceeds the ' + field.limit + ' character limit. Please shorten your response before submitting.');
                         isValid = false;
@@ -721,7 +962,7 @@
                 btn.disabled = true;
 
                 const payload = Object.fromEntries(new FormData(form).entries());
-                
+
                 if (typeof signaturePad !== 'undefined' && !signaturePad.isEmpty()) {
                     payload.signature = signaturePad.toDataURL();
                 }
@@ -735,60 +976,82 @@
                     }
 
                     const googleScriptURL = 'https://script.google.com/macros/s/AKfycbwomBy2dIjNFnNe2nNwD4x_GL33wQTjxdV6tm3g-uEYuMhNoFVdiiwfqD-vaYNS1cJrIw/exec';
-                    const googleScriptURL2 = 'https://script.google.com/macros/s/AKfycbyu-nZVzdi9ERBvr_d9DCY23jnt5uT_hSahwlAX-SA3xm3HdeU4pByPSvgqPOl4wG1AUg/exec';
-
-                    fetch(googleScriptURL2, {
-                        method: 'POST',
-                        body: urlEncodedData
-                    })
-                    .then(response => response.text())
-                    .then(text => {
-                        let data;
-                        try {
-                            data = JSON.parse(text);
-                        } catch (e) {
-                            throw new Error("Server returned non-JSON response: " + text.substring(0, 100));
-                        }
-                        
-                        if (data.status === 'success' || data.result === 'success') {
-                            alert("Application successfully submitted. We will be in touch soon.");
-                            form.reset();
-                            if(typeof signaturePad !== 'undefined') signaturePad.clear();
-                        } else {
-                            console.error("Server Response:", data);
-                            alert("Submission failed.\n\nServer Response: " + JSON.stringify(data));
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Submission Error:', error);
-                        alert("An error occurred during submission: " + error.message);
-                    })
-                    .finally(() => {
-                        btn.innerText = "Submit Application";
-                        btn.disabled = false;
-                    });
+                    // const googleScriptURL2 = 'https://script.google.com/macros/s/AKfycbyu-nZVzdi9ERBvr_d9DCY23jnt5uT_hSahwlAX-SA3xm3HdeU4pByPSvgqPOl4wG1AUg/exec';
 
                     fetch(googleScriptURL, {
                         method: 'POST',
                         body: urlEncodedData
                     })
+                        .then(response => response.text())
+                        .then(text => {
+                            let data;
+                            try {
+                                data = JSON.parse(text);
+                            } catch (e) {
+                                throw new Error("Server returned non-JSON response: " + text.substring(0, 100));
+                            }
+
+                            if (data.status === 'success' || data.result === 'success') {
+                                alert("Application successfully submitted. We will be in touch soon.");
+                                form.reset();
+                                if (typeof signaturePad !== 'undefined') signaturePad.clear();
+                            } else {
+                                console.error("Server Response:", data);
+                                alert("Submission failed.\n\nServer Response: " + JSON.stringify(data));
+                            }
+                        })
+                        .catch(error => {
+                            console.error('Submission Error:', error);
+                            alert("An error occurred during submission: " + error.message);
+                        })
+                        .finally(() => {
+                            btn.innerText = "Submit Application";
+                            btn.disabled = false;
+                        });
+
+                    // fetch(googleScriptURL, {
+                    //     method: 'POST',
+                    //     body: urlEncodedData
+                    // })
                 }
 
                 console.log(`${payload}`);
 
-                // Process file if one was selected
+                // Package all selected documents into one ZIP for the existing Apps Script.
                 const fileInput = document.getElementById('supportingDocuments');
                 if (fileInput && fileInput.files.length > 0) {
-                    const file = fileInput.files[0];
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        // Extract just the base64 string
-                        payload.supportingDocuments = e.target.result.split(',')[1];
-                        payload.supportingDocumentsMimeType = file.type || 'application/octet-stream';
-                        payload.supportingDocumentsName = file.name;
-                        submitToGoogle();
-                    };
-                    reader.readAsDataURL(file);
+                    const files = Array.from(fileInput.files);
+                    btn.innerText = "Preparing documents...";
+
+                    if (typeof JSZip === 'undefined') {
+                        alert("The document packaging tool could not be loaded. Please refresh the page and try again.");
+                        btn.innerText = "Submit Application";
+                        btn.disabled = false;
+                        return;
+                    }
+
+                    const zip = new JSZip();
+                    files.forEach((file, index) => {
+                        zip.file((index + 1) + "-" + file.name, file);
+                    });
+
+                    zip.generateAsync({
+                        type: "base64",
+                        compression: "DEFLATE",
+                        compressionOptions: { level: 6 }
+                    })
+                        .then(zipBase64 => {
+                            payload.supportingDocuments = zipBase64;
+                            payload.supportingDocumentsMimeType = "application/zip";
+                            payload.supportingDocumentsName = "supporting-documents.zip";
+                            submitToGoogle();
+                        })
+                        .catch(error => {
+                            console.error("ZIP creation error:", error);
+                            alert("The supporting documents could not be packaged. Please try again.");
+                            btn.innerText = "Submit Application";
+                            btn.disabled = false;
+                        });
                 } else {
                     submitToGoogle();
                 }
@@ -797,4 +1060,5 @@
         });
     </script>
 </body>
+
 </html>
